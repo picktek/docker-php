@@ -17,5 +17,7 @@ RUN rm -rf /root/src /tmp/* /usr/share/man /var/cache/apk/*
 
 RUN mkdir -p /var/www/drupal_files_public && \
 	mkdir -p /var/www/drupal_files_private && \
+	mkdir -p /var/www/drupal_files_twigstorage && \
+	chmod -R 777 /var/www/drupal_files_twigstorage && \
 	chmod -R 777 /var/www/drupal_files_public && \
 	chmod -R 777 /var/www/drupal_files_private
