@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-alpine
+FROM php:fpm-alpine
 MAINTAINER drupal-docker
 
 RUN apk add --no-cache --virtual .dd-build-deps git postgresql libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
