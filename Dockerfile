@@ -1,7 +1,7 @@
-FROM php:7.0-fpm-alpine
+FROM php:7.2-fpm-alpine
 MAINTAINER drupal-docker
 
-RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
+RUN apk add --no-cache --virtual .dd-build-deps git postgresql libpng-dev libjpeg-turbo-dev postgresql-dev libxml2-dev $PHPIZE_DEPS \
    && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
    && docker-php-ext-install gd mbstring pdo_mysql pdo_pgsql zip \
    && docker-php-ext-install opcache bcmath soap \
@@ -11,3 +11,5 @@ RUN apk add --no-cache --virtual .dd-build-deps libpng-dev libjpeg-turbo-dev pos
    && apk del .dd-build-deps
 
 COPY drupal-*.ini /usr/local/etc/php/conf.d/
+
+RUN rm -rf /root/src /tmp/* /usr/share/man /var/cache/apk/*
