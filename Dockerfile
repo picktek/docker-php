@@ -13,3 +13,9 @@ RUN apk add --no-cache --virtual .dd-build-deps git postgresql libpng-dev libjpe
 COPY drupal-*.ini /usr/local/etc/php/conf.d/
 
 RUN rm -rf /root/src /tmp/* /usr/share/man /var/cache/apk/*
+
+
+RUN mkdir -p /var/www/drupal_files_public && \
+	mkdir -p /var/www/drupal_files_private && \
+	chmod -R +ur  /var/www/drupal_files_public && \
+	chmod -R +ur  /var/www/drupal_files_private
