@@ -7,7 +7,7 @@ RUN apk add --no-cache --virtual .dd-build-deps git postgresql libpng-dev libjpe
    && docker-php-ext-install opcache bcmath soap \
    && pecl install redis-3.1.1 \
    && docker-php-ext-enable redis \
-   && apk add --no-cache libpng libjpeg libpq libxml2 git postgresql \
+   && apk add --no-cache libpng libjpeg libpq libxml2 git postgresql mysql-client \
    && apk del .dd-build-deps
 
 COPY drupal-*.ini /usr/local/etc/php/conf.d/
